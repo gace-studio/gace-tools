@@ -7,8 +7,8 @@ export class BoostService {
     private subscriptionAutoBoost: Subscription;
 
     public autoBoost(productIds: number[]): Promise<boolean> {
-        const timer = interval(2000);
-        // const timer = interval(4 * 3600 * 1000);
+        // const timer = interval(2000);
+        const timer = interval(4 * 3600 * 1000 + 5000);
         if (this.subscriptionAutoBoost) {
             this.subscriptionAutoBoost.unsubscribe();
         }
