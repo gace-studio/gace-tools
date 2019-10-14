@@ -14,13 +14,24 @@ export class BoostService {
         }
         return new Promise((resolve, reject) => {
             this.subscriptionAutoBoost = timer.subscribe(() => {
-                return Promise.all(productIds.map(id => {
+                Promise.all(productIds.map(id => {
                     return this.shopeeSvc.boost(id);
                 })).then(() => {
+                    console.log('Boot OK! at ', new Date(Date.now()).toDateString);
                     resolve(true);
                 }).catch((errors) => {
+                    console.log('Boot ERROR! at ', new Date(Date.now()).toDateString);
                     reject(errors);
                 });
+            });
+            return Promise.all(productIds.map(id => {
+                return this.shopeeSvc.boost(id);
+            })).then(() => {
+                console.log('Boot OK! at ', new Date(Date.now()).toDateString);
+                resolve(true);
+            }).catch((errors) => {
+                console.log('Boot ERROR! at ', new Date(Date.now()).toDateString);
+                reject(errors);
             });
         });
 
