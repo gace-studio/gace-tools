@@ -17,20 +17,20 @@ export class BoostService {
                 Promise.all(productIds.map(id => {
                     return this.shopeeSvc.boost(id);
                 })).then(() => {
-                    console.log('Boot OK! at ', new Date(Date.now()).toDateString);
+                    console.log('Boot OK! at ', new Date(Date.now()).toString());
                     resolve(true);
                 }).catch((errors) => {
-                    console.log('Boot ERROR! at ', new Date(Date.now()).toDateString);
+                    console.log('Boot ERROR! at ', new Date(Date.now()).toString());
                     reject(errors);
                 });
             });
             return Promise.all(productIds.map(id => {
                 return this.shopeeSvc.boost(id);
             })).then(() => {
-                console.log('Boot OK! at ', new Date(Date.now()).toDateString);
+                console.log('Boot OK! at ', new Date(Date.now()).toString());
                 resolve(true);
             }).catch((errors) => {
-                console.log('Boot ERROR! at ', new Date(Date.now()).toDateString);
+                console.log('Boot ERROR! at ', new Date(Date.now()).toString());
                 reject(errors);
             });
         });
